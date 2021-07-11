@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matchs snapshot 02 1`] = `
+<div
+  className="sc-bdnxRM hhtRwE"
+  data-testid="box"
+>
+  save 02
+</div>
+`;
+
+exports[`matchs snapshot 1`] = `
+<div
+  className="sc-bdnxRM hhtRwE"
+  data-testid="box"
+>
+  save
+</div>
+`;
