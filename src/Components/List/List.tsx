@@ -13,14 +13,19 @@ export interface listProps extends StyledProps<any> {
 
 const List = (props: listProps) => {
   const { list } = props;
+  const [listData, setListData] = React.useState(list)
 
   const deleteBtnClick = (index: number) => {
     console.log(index)
     // list.splice(index, 1);
+
+    const listDataCopy = [...listData];
+    listDataCopy.splice(index, 1);
+    setListData(listDataCopy)
   }
 
   return (
-    list.map((item: object, index: any) => {
+    listData.map((item: object, index: any) => {
       const { name, age, title, body, done }: listProps = item;
       return (
         <div key={index} style={{'color': 'gold'}}>
