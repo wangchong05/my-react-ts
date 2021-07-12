@@ -6,6 +6,7 @@ import axios from "axios";
 export interface BoxProps extends StyledProps<any> {
   label?: string;
   // list: Array<object>;
+  name?: string;
 }
 
 const arr = [
@@ -27,7 +28,7 @@ const arr = [
   },
 ]
 
-const arr02 = [1,2,3,4,5,6,7]
+// const arr02 = [1,2,3,4,5,6,7]
 
 const BoxWrapper: React.FC<BoxProps> = styled.div<BoxProps>`
   padding: 10px;
@@ -44,8 +45,21 @@ const BoxWrapper: React.FC<BoxProps> = styled.div<BoxProps>`
 //   })
 // }
 
-const getData2 = () => {
-  return arr02
+const getData2 = (list: Array<object>) => {
+  // return arr02
+  return (
+    list.map((item: object, index: any) => {
+      const {name}: BoxProps = item;
+      return (
+        <div key={index} style={{'color': 'gold'}}>
+          <span>{index}</span>
+          <span>,</span>
+          <span>{name}</span>
+          <hr/>
+        </div>
+      )
+    })
+  );
 }
 
 const Box = ({ label, children }: BoxProps) => {
@@ -58,7 +72,7 @@ const Box = ({ label, children }: BoxProps) => {
     <div>
       {/* <List list={list}/> */}
       {/* <div>{getData()}</div> */}
-      {getData2()}
+      {getData2(arr)}
       <BoxWrapper data-testid='box'>
         { label }
       </BoxWrapper>
