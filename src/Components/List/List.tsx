@@ -24,6 +24,7 @@ const List = (props: listProps) => {
     setListData(listDataCopy)
   }
 
+  console.log(listData)
   return (
     listData.map((item: object, index: any) => {
       const { name, age, title, body, done }: listProps = item;
