@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled, { StyledProps } from "styled-components";
 import axios from "axios";
 import List from "../List/List";
@@ -42,28 +42,9 @@ const BoxWrapper: React.FC<BoxProps> = styled.div<BoxProps>`
 
 const getData = () => {
   axios.get('https://jsonplaceholder.typicode.com/posts').then(res => {
-    console.log(res.data)
     const list: Array<object> = res.data;
     return <List list={list}/>
   })
-}
-
-const getData2 = (list: Array<object>) => {
-  return (
-    list.map((item: object, index: any) => {
-      const { name, age }: BoxProps = item;
-      return (
-        <div key={index} style={{'color': 'gold'}}>
-          <span>{index}</span>
-          <span>_</span>
-          <span>{name}</span>
-          <span>_</span>
-          <span>{age}</span>
-          <hr/>
-        </div>
-      )
-    })
-  );
 }
 
 const getData3 = () => {
@@ -72,9 +53,11 @@ const getData3 = () => {
 }
 
 const Box = ({ label, children }: BoxProps) => {
-  getData()
+  // getData()
 
   // return <div data-testid='box'>{ label }</div>;
+  
+  // const TodoItemList: ReactNode = getData3();
 
   return (
     <div>
@@ -84,9 +67,10 @@ const Box = ({ label, children }: BoxProps) => {
       {/* 不能将类型“void”分配给类型“ReactNode”。ts(2322)
 index.d.ts(1346, 9): 所需类型来自属性 "children"，在此处的 "DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>" 类型上声明该属性
 const getData: () => void */}
-      <div>{getData3()}</div>
+      {/* <div>{getData3()}</div> */}
+      
+      {/* <div>{TodoItemList}</div> */}
 
-      {/* {getData2(arr)} */}
       <BoxWrapper data-testid='box'>
         { label }
       </BoxWrapper>
