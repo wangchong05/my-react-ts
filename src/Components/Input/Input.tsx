@@ -7,6 +7,7 @@ export interface InputProps extends StyledProps<any> {
   value?: string | number;
   readonly?: boolean;
   disabled?: boolean;
+  labelStyle?: object;
 }
 
 // const InputWrapper: React.FC<InputProps> = styled.div<InputProps>`
@@ -22,12 +23,12 @@ const Input = (props: InputProps) => {
     defaultValue, 
     readOnly, 
     changeContent, 
-    disabled 
+    disabled, 
+    labelStyle
   }: InputProps = props;
   console.log({...props})
 
   const [inputType, setInputType] = useState(type)
-  console.log(inputType)
   const [hide, setHide] = useState(true)
 
   const hidePassword = (): boolean => {
@@ -42,12 +43,15 @@ const Input = (props: InputProps) => {
     changeContent({[KeyName]: type === "password" ? window.btoa(e.target.value) : e.target.value})
   }
 
-  const labelStyle = props.labelStyle || {
+  const defaultLabelStyle = {
     'min-width': '100px',
     'display': 'inline-block',
     'color': 'black',
     'font-size': '16px'
   }
+
+  const labelStyleProps = labelStyle ? Object.assign(defaultLabelStyle, labelStyle) : defaultLabelStyle
+
   // style样式的处理
   const styleFun = (style: any) => {
       let styleStr = '';
@@ -62,25 +66,48 @@ const Input = (props: InputProps) => {
 
   const Span = styled.span`
     ${
-      styleFun(labelStyle)
+      styleFun(labelStyleProps)
     }
   `;
+  
+  // InputWrapper
+  const InputWrapper = (props: InputProps) => {
+    return (
+      <div>
+        <Span>{label}</Span>
+        <input 
+          // {...props}// props如何不带value属性
+          type={inputType} 
+          // value={defaultValue} 
+          defaultValue={defaultValue} 
+          readOnly={readOnly} 
+          disabled={disabled} 
+          onChange={onChangeContent}/>
+        { type === "password" && (
+          <input type="button" value={hide? "show": "hide"} onClick={hidePassword}/>
+        )}
+      </div>
+    );
+  }
 
 
   return (
     <div>
       <Span>{label}</Span>
       <input 
-        // {...props}
+        // {...props}// props如何不带value属性
         type={inputType} 
+        // value={defaultValue} 
         defaultValue={defaultValue} 
         readOnly={readOnly} 
         disabled={disabled} 
+        style={props.inputStyle ? props.inputStyle : {}}// Object.assign(style)
         onChange={onChangeContent}/>
       { type === "password" && (
         <input type="button" value={hide? "show": "hide"} onClick={hidePassword}/>
       )}
     </div>
+    // <InputWrapper />
   );
 }
 

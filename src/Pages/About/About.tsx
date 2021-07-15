@@ -37,14 +37,19 @@ const About = () => {
           label={'last name'} 
           KeyName={'lastName'} 
           disabled 
-          // labelStyle={{'min-width': '300px','font-size': '34px','background': 'gold'}}
+          labelStyle={{'min-width': '150px','font-size': '8px','background': 'gold'}}
           changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
         <Input label={'date'} KeyName={'date'} type={"date"} defaultValue={content.date} changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
-        <Input label={'password'} KeyName={'password'} type={"password"} changeContent={changeContent}/>
+        <Input 
+          label={'password'} 
+          KeyName={'password'} 
+          type={"password"} 
+          inputStyle={{'minWidth': '400px','border': '1px solid green','background': 'gold'}}
+          changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
         <Input label={'radio'} KeyName={'radio'} type={"radio"} changeContent={changeContent}/>
