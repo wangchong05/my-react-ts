@@ -33,7 +33,12 @@ const About = () => {
         <Input label={'first name'} KeyName={'firstName'} defaultValue={content.firstName} changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
-        <Input label={'last name'} KeyName={'lastName'} disabled changeContent={changeContent}/>
+        <Input 
+          label={'last name'} 
+          KeyName={'lastName'} 
+          disabled 
+          // labelStyle={{'min-width': '300px','font-size': '34px','background': 'gold'}}
+          changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
         <Input label={'date'} KeyName={'date'} type={"date"} defaultValue={content.date} changeContent={changeContent}/>

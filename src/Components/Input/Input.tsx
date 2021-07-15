@@ -41,10 +41,33 @@ const Input = (props: InputProps) => {
     changeContent({[KeyName]: type === "password" ? window.btoa(e.target.value) : e.target.value})
   }
 
+  const labelStyle: object = props.labelStyle || {
+    'min-width': '100px',
+    'display': 'inline-block',
+    'color': 'black',
+    'font-size': '16px'
+  }
+  const styleFun = (style: any) => {
+      let styleStr = '';
+      const labelStyleKeys = Object.keys(style);
+      labelStyleKeys.forEach((e: string) => {
+        const labelStyleKeyName: any = style[e];
+        styleStr = styleStr + e + ':' + labelStyleKeyName + ';'
+      })
+      console.log(styleStr)
+      return styleStr;
+  }
+
+  const Span = styled.span`
+    ${
+      styleFun(labelStyle)
+    }
+  `;
+
 
   return (
     <div>
-      <span style={{'minWidth': '100px', 'display': 'inline-block'}}>{label}</span>
+      <Span>{label}</Span>
       <input 
         type={inputType} 
         defaultValue={defaultValue} 
