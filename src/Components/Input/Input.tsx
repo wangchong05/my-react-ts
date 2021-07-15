@@ -24,6 +24,7 @@ const Input = (props: InputProps) => {
     changeContent, 
     disabled 
   }: InputProps = props;
+  console.log({...props})
 
   const [inputType, setInputType] = useState(type)
   console.log(inputType)
@@ -41,12 +42,13 @@ const Input = (props: InputProps) => {
     changeContent({[KeyName]: type === "password" ? window.btoa(e.target.value) : e.target.value})
   }
 
-  const labelStyle: object = props.labelStyle || {
+  const labelStyle = props.labelStyle || {
     'min-width': '100px',
     'display': 'inline-block',
     'color': 'black',
     'font-size': '16px'
   }
+  // style样式的处理
   const styleFun = (style: any) => {
       let styleStr = '';
       const labelStyleKeys = Object.keys(style);
@@ -69,15 +71,14 @@ const Input = (props: InputProps) => {
     <div>
       <Span>{label}</Span>
       <input 
+        // {...props}
         type={inputType} 
         defaultValue={defaultValue} 
         readOnly={readOnly} 
-        onChange={onChangeContent}
-        disabled={disabled}/>
-      { type === "password" ? (
+        disabled={disabled} 
+        onChange={onChangeContent}/>
+      { type === "password" && (
         <input type="button" value={hide? "show": "hide"} onClick={hidePassword}/>
-      ) : (
-        ''
       )}
     </div>
   );
