@@ -24,37 +24,39 @@ const About = () => {
 
   return (
     <div style={{'textAlign': 'left'}}>
-      {/* About
-      <br />
-      <Button disabled={false} variant={'light.primary'}/> */}
-      {/* <Box label={'Box title'}/> */}
-
       <div style={{'display': 'flex'}}>
-        <Input label={'first name'} KeyName={'firstName'} defaultValue={content.firstName} changeContent={changeContent}/>
+        <Input 
+          label={'first name'} 
+          KeyName={'firstName'} 
+          defaultValue={content.firstName} 
+          labelStyle={{'min-width': '100px','font-size': '14px'}}
+          changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
         <Input 
           label={'last name'} 
           KeyName={'lastName'} 
-          disabled 
-          labelStyle={{'min-width': '150px','font-size': '8px','background': 'gold'}}
+          disabled
+          labelStyle={{'min-width': '100px','font-size': '14px'}}
           changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
-        <Input label={'date'} KeyName={'date'} type={"date"} defaultValue={content.date} changeContent={changeContent}/>
+        <Input 
+          label={'date'} 
+          KeyName={'date'} 
+          type={"date"} 
+          labelStyle={{'min-width': '100px','font-size': '14px'}}
+          defaultValue={content.date} 
+          changeContent={changeContent}/>
       </div>
       <div style={{'display': 'flex'}}>
         <Input 
           label={'password'} 
           KeyName={'password'} 
           type={"password"} 
-          inputStyle={{'minWidth': '400px','border': '1px solid green','background': 'gold'}}
+          labelStyle={{'min-width': '100px','font-size': '14px'}}
           changeContent={changeContent}/>
       </div>
-      <div style={{'display': 'flex'}}>
-        <Input label={'radio'} KeyName={'radio'} type={"radio"} changeContent={changeContent}/>
-      </div>
-      <div onClick={submitData}>submit</div>
     </div>
   );
 }
