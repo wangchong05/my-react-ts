@@ -20,7 +20,7 @@ const listOrigin = [
   }
 ]
 
-const TodoList: React.FC<TodoItemProps> = () => {
+const TodoList = () => {
 
   const [list, setList] = useState(
     listOrigin
@@ -28,7 +28,7 @@ const TodoList: React.FC<TodoItemProps> = () => {
 
   const [updateTime, setUpdateTime] = useState('')
 
-  const myRef = useRef<any>(null)
+  const myRef = useRef<any>('')
 
   useEffect(()=>{
     setUpdateTime(new Date().toLocaleString())
@@ -60,13 +60,13 @@ const TodoList: React.FC<TodoItemProps> = () => {
   }
 
   return (
-    <div>
+    <div data-testid='todolist'>
       <h3>List</h3>
       <div>Update Time: {updateTime}</div>
       <br/>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <input type="text" ref={myRef}/>
-        <button onClick={addItem}>add</button>
+        <input type="text" ref={myRef} placeholder={'please input'} data-testid='input'/>
+        <button onClick={addItem} data-testid='Add'>add</button>
       </div>
       <br/>
 

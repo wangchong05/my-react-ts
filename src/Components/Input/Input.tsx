@@ -3,30 +3,25 @@ import styled, { StyledProps } from "styled-components";
 
 export interface InputProps extends StyledProps<any> {
   label?: string;
-  type?: "text" | "date" | "password" | "email" | "radio";
+  type?: "text" | "date" | "password";
+  // type?: "text" | "password";
   value?: string | number;
-  readonly?: boolean;
+  readOnly?: boolean;
   disabled?: boolean;
   labelStyle?: object;
 }
 
-// const InputWrapper: React.FC<InputProps> = styled.div<InputProps>`
-//   padding: 10px;
-//   border: 1px solid gray;
-// `;
-
 const Input = (props: InputProps) => {
   const { 
     label, 
-    KeyName, 
+    // KeyName, 
     type, 
     defaultValue, 
     readOnly, 
-    changeContent, 
+    // changeContent, 
     disabled, 
     labelStyle
   }: InputProps = props;
-  console.log({...props})
 
   const [inputType, setInputType] = useState(type)
   const [hide, setHide] = useState(true)
@@ -38,16 +33,21 @@ const Input = (props: InputProps) => {
     return true
   }
 
-  const onChangeContent = (e:any) => {
-    // console.log(e.target.value)
-    changeContent({[KeyName]: type === "password" ? window.btoa(e.target.value) : e.target.value})
-  }
+  // const onChangeContent = (val:any) => {
+  //   // changeContent({[KeyName]: type === "password" ? window.btoa(val.target.value) : val.target.value})
+  //   changeContent({[KeyName]: val.target.value})
+  // }
 
   const defaultLabelStyle = {
-    'min-width': '100px',
+    'min-width': '50px',
     'display': 'inline-block',
     'color': 'black',
     'font-size': '16px'
+  }
+
+  const defaultInputStyle = {
+    'minWidth': '200px',
+    'border': '1px solid gray'
   }
 
   const labelStyleProps = labelStyle ? Object.assign(defaultLabelStyle, labelStyle) : defaultLabelStyle
@@ -60,7 +60,6 @@ const Input = (props: InputProps) => {
         const labelStyleKeyName: any = style[e];
         styleStr = styleStr + e + ':' + labelStyleKeyName + ';'
       })
-      console.log(styleStr)
       return styleStr;
   }
 
@@ -69,52 +68,32 @@ const Input = (props: InputProps) => {
       styleFun(labelStyleProps)
     }
   `;
-  
-  // InputWrapper
-  const InputWrapper = (props: InputProps) => {
-    return (
-      <div>
-        <Span>{label}</Span>
-        <input 
-          // {...props}// props如何不带value属性
-          type={inputType} 
-          // value={defaultValue} 
-          defaultValue={defaultValue} 
-          readOnly={readOnly} 
-          disabled={disabled} 
-          onChange={onChangeContent}/>
-        { type === "password" && (
-          <input type="button" value={hide? "show": "hide"} onClick={hidePassword}/>
-        )}
-      </div>
-    );
-  }
-
 
   return (
-    <div>
-      <Span>{label}</Span>
+    <div style={{display: 'flex', margin: '10px'}}>
+      <Span data-testid='span'>{label}</Span>
       <input 
+        data-testid='input'
         // {...props}// props如何不带value属性
         type={inputType} 
         // value={defaultValue} 
         defaultValue={defaultValue} 
         readOnly={readOnly} 
         disabled={disabled} 
-        style={props.inputStyle ? props.inputStyle : {}}// Object.assign(style)
-        onChange={onChangeContent}/>
+        style={props.inputStyle ? Object.assign(defaultInputStyle, props.inputStyle) : defaultInputStyle}// Object.assign(style)
+        // onChange={onChangeContent}/>
+        />
       { type === "password" && (
-        <input type="button" value={hide? "show": "hide"} onClick={hidePassword}/>
+        <input data-testid='input-button' type="button" value={hide? "show": "hide"} onClick={hidePassword}/>
       )}
     </div>
-    // <InputWrapper />
   );
 }
 
 Input.defaultProps = {
   type: 'text',
   value: '',
-  readonly: false
+  readOnly: false
 };
 
 export default Input;
