@@ -1,0 +1,475 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add and delete each item in the list A data was successfully added, and the length of the list was added by one 1`] = `
+<div
+  data-testid="todolist"
+>
+  <h3>
+    List
+  </h3>
+  <div
+    data-testid="update-time"
+  >
+    Update Time: 
+    2021/7/19上午12:46:55
+  </div>
+  <br />
+  <div
+    style="display: flex; justify-content: space-between;"
+  >
+    <input
+      data-testid="input"
+      placeholder="please input"
+      type="text"
+    />
+    <button
+      data-testid="Add"
+      disabled=""
+    >
+      add
+    </button>
+  </div>
+  <br />
+  <div
+    data-testid="list"
+  >
+    <div
+      class="sc-cBoqAE hjkzgH"
+      data-testid="list0"
+    >
+      <div
+        style="flex: 2;"
+      >
+        drink
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete0"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete0"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-ciSkZP hwPYPK"
+      data-testid="list1"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete1"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete1"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-jcwpoC eCgWwy"
+      data-testid="list2"
+    >
+      <div
+        style="flex: 2;"
+      >
+        input text
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete2"
+          style="color: red;"
+        >
+          No
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete2"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Add and delete each item in the list A piece of data was successfully deleted and the length of the list was reduced by one 1`] = `
+<div
+  data-testid="todolist"
+>
+  <h3>
+    List
+  </h3>
+  <div
+    data-testid="update-time"
+  >
+    Update Time: 
+    2021/7/19上午12:46:55
+  </div>
+  <br />
+  <div
+    style="display: flex; justify-content: space-between;"
+  >
+    <input
+      data-testid="input"
+      placeholder="please input"
+      type="text"
+    />
+    <button
+      data-testid="Add"
+      disabled=""
+    >
+      add
+    </button>
+  </div>
+  <br />
+  <div
+    data-testid="list"
+  >
+    <div
+      class="sc-cTJkRt hPAIBg"
+      data-testid="list0"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete0"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete0"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`add button click cases click the add button directly 1`] = `
+<div
+  data-testid="todolist"
+>
+  <h3>
+    List
+  </h3>
+  <div
+    data-testid="update-time"
+  >
+    Update Time: 
+    2021/7/19上午12:46:54
+  </div>
+  <br />
+  <div
+    style="display: flex; justify-content: space-between;"
+  >
+    <input
+      data-testid="input"
+      placeholder="please input"
+      type="text"
+    />
+    <button
+      data-testid="Add"
+      disabled=""
+    >
+      add
+    </button>
+  </div>
+  <br />
+  <div
+    data-testid="list"
+  >
+    <div
+      class="sc-ksluID JMpHA"
+      data-testid="list0"
+    >
+      <div
+        style="flex: 2;"
+      >
+        drink
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete0"
+          style="color: red;"
+        >
+          No
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete0"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-hBMUJo kWvRdl"
+      data-testid="list1"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete1"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete1"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`add button click cases enter the value is not empty, and then click the add button 1`] = `
+<div
+  data-testid="todolist"
+>
+  <h3>
+    List
+  </h3>
+  <div
+    data-testid="update-time"
+  >
+    Update Time: 
+    2021/7/19上午12:46:55
+  </div>
+  <br />
+  <div
+    style="display: flex; justify-content: space-between;"
+  >
+    <input
+      data-testid="input"
+      placeholder="please input"
+      type="text"
+    />
+    <button
+      data-testid="Add"
+    >
+      add
+    </button>
+  </div>
+  <br />
+  <div
+    data-testid="list"
+  >
+    <div
+      class="sc-fKgJPI iaPKyR"
+      data-testid="list0"
+    >
+      <div
+        style="flex: 2;"
+      >
+        drink
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete0"
+          style="color: red;"
+        >
+          No
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete0"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-bCwfaz kHRhhV"
+      data-testid="list1"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete1"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete1"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`add button click cases enter the value to empty, and then click the add button 1`] = `
+<div
+  data-testid="todolist"
+>
+  <h3>
+    List
+  </h3>
+  <div
+    data-testid="update-time"
+  >
+    Update Time: 
+    2021/7/19上午12:46:54
+  </div>
+  <br />
+  <div
+    style="display: flex; justify-content: space-between;"
+  >
+    <input
+      data-testid="input"
+      placeholder="please input"
+      type="text"
+    />
+    <button
+      data-testid="Add"
+      disabled=""
+    >
+      add
+    </button>
+  </div>
+  <br />
+  <div
+    data-testid="list"
+  >
+    <div
+      class="sc-bkbkJK ckstoR"
+      data-testid="list0"
+    >
+      <div
+        style="flex: 2;"
+      >
+        drink
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete0"
+          style="color: red;"
+        >
+          No
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete0"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-iemWCZ cpULLB"
+      data-testid="list1"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete1"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete1"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

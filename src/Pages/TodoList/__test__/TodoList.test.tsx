@@ -9,7 +9,7 @@ beforeEach(() => {
   render(<TodoList />);
 })
  
-describe('TodoList render', () => {// TodoList渲染---------------------(1)
+describe('TodoList render', () => {
   test('renders visible static elements in the TodoList', () => {
     screen.getByText('List');
     screen.getByText(/Update Time:/);
@@ -18,19 +18,19 @@ describe('TodoList render', () => {// TodoList渲染---------------------(1)
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('please input')).toBeInTheDocument();
 
-    // expect(screen.getByTestId('todolist')).toMatchSnapshot();// TodoList生成快照
+    // expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
 });
  
-describe('Input cases', () => {// input输入内容-----------(2)
+describe('Input cases', () => {
   test('input text', () => {
     userEvent.type(screen.getByRole('textbox'), 'input text');
     expect(screen.getByDisplayValue('input text')).toBeInTheDocument();
   });
 });
  
-describe('测列表complete的初始值', () => {// input输入内容-----------(3)
-  test('input text', () => {
+describe('the initial state of the rendered list', () => {
+  test('initial state', () => {
     const complete0 = screen.getByTestId('complete0');
     expect(complete0).toHaveTextContent("No");
     const complete1 = screen.getByTestId('complete1');
@@ -39,77 +39,86 @@ describe('测列表complete的初始值', () => {// input输入内容-----------
 });
 
 
-describe('Click cases', () => {// 点击情况-----------(3)
-  test('add button is enabled', async () => {
+describe('add button click cases', () => {
+  test('click the add button directly', async () => {
     await userEvent.click(screen.getByTestId('Add'));
+    expect(screen.getByTestId('Add')).toBeDisabled();
+
+    expect(screen.getByTestId('todolist')).toMatchSnapshot();
+  });
+  test('enter the value to empty, and then click the add button', async () => {
+    userEvent.type(screen.getByRole('textbox'), '');
+    await userEvent.click(screen.getByTestId('Add'));
+    expect(screen.getByTestId('Add')).toBeDisabled();
+
+    expect(screen.getByTestId('todolist')).toMatchSnapshot();
+  });
+  test('enter the value is not empty, and then click the add button', async () => {
+    userEvent.type(screen.getByRole('textbox'), 'input text');
     expect(screen.getByTestId('Add')).toBeEnabled();
+    
+    expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
 });
 
 
-// describe('hover', () => {// ---------(4)
-//   test('测试hover时的反应', async () => {
+// describe('hover', () => {
+//   test('hover', async () => {
 //     const list0 = screen.getByTestId('list0');
 //     await userEvent.hover(list0);
-//     expect(list0).toHaveStyle({'background': '#e8e6e6'})
-//   })
-//   test('测试hover时的反应2', async () => {
-//     const list1 = screen.getByTestId('list1');
-//     await userEvent.hover(list1);
-//     expect(list1).toHaveStyle({'background': '#e8e6e6'})
+//     expect(screen.getByTestId('list0')).toHaveStyle({'background': '#e8e6e6'})
 //   })
 // })
  
-// describe('点击complete的时候,yes和no的切换', () => {// 点击情况-----------(5)
-//   test('点击complete的时候,yes和no的切换', async () => {
-//     const complete0 = screen.getByTestId('complete0');
-//     // expect(complete0).toHaveStyle({'color': 'red'})
-//     await userEvent.click(complete0);
-//     // expect(complete0).toHaveStyle({'color': 'green'})
-//     expect(complete0).toHaveTextContent("Yes");
-//   });
-// });
- 
-// describe('点击complete的时候,yes和no的切换2', () => {// 点击情况-----------(6)
-//   test('点击complete的时候,yes和no的切换', async () => {
-//     const complete1 = screen.getByTestId('complete1');
-//     // expect(complete1).toHaveStyle({'color': 'green'})
+describe('Click the status button', () => {
+  test('Click the status button, text and style should be changed', async () => {
+    // expect(screen.getByTestId('complete1')).toHaveStyle({'color': 'green'})
+    // expect(screen.getByTestId('complete1')).toHaveTextContent("Yes");
 
-//     await userEvent.click(complete1);
-//     // expect(complete1).toHaveStyle({'color': 'red'})
-//     expect(complete1).toHaveTextContent("No");
-//   });
-// });
- 
-// describe('点击complete的时候,yes和no的切换2222', () => {// 点击情况-----------(6)
-//   test('点击complete的时候,yes和no的切换222', async () => {
-//     const tree = renderer.create(<TodoList />).toJSON();
-//     console.log('--------------------------tree--------------------------')
-//     console.log(tree)
-//     console.log(tree.children[5].children)
-//     console.log('--------------------------tree--------------------------')
-//   });
-// });
- 
-// describe('输入内容点击add的时候,列表长度加一', () => {// 点击情况-----------(7)
-//   test('输入内容点击add的时候,列表长度加一', async () => {
-//     const tree = renderer.create(<TodoList />).toJSON();
-//     const listLength = tree.children[5].children.length;
-//     console.log('--------------------------tree1--------------------------')
-//     console.log(listLength)
-//     userEvent.type(screen.getByRole('textbox'), 'input text');
-//     expect(screen.getByDisplayValue('input text')).toBeInTheDocument();
+    // await userEvent.click(screen.getByTestId('complete1'));
+    // expect(screen.getByTestId('complete1')).toHaveStyle({'color': 'red'})
+    // expect(screen.getByTestId('complete1')).toHaveTextContent("No");
+    
+    const list = screen.getAllByTestId(/complete/);
+    list.map((e, index)=> {
+      const styleChangeBefore = e.style;
+      // const innerhtmlChangeBefore = e.innerHTML;
+      userEvent.click(e);
+      const styleChangeAfter = screen.getByTestId('complete' + index).style;
+      // const innerhtmlChangeAfter = screen.getByTestId('complete' + index).innerHTML;
 
-//     await userEvent.click(screen.getByTestId('Add'));
-//     const newListLength = tree.children[5].children.length;
-//     console.log(newListLength)
-//     console.log('--------------------------tree2--------------------------')
+      expect(styleChangeBefore).not.toEqual(styleChangeAfter)
+      // expect(innerhtmlChangeBefore).not.toBe(innerhtmlChangeAfter)
+    })
+  });
+});
 
-//     // expect(screen.getByTestId('input')).toHaveAttribute('type', 'text');
-//     // const tree = renderer.create(<TodoList />).toJSON();
-//     // console.log('--------------------------tree--------------------------')
-//     // console.log(tree)
-//     // console.log(tree.children[5].children)
-//     // console.log('--------------------------tree--------------------------')
-//   });
-// });
+
+describe('Add and delete each item in the list', () => {
+  test('A data was successfully added, and the length of the list was added by one', () => {
+    const listLengthAddBefore = screen.getByTestId('list').childElementCount;
+    userEvent.type(screen.getByRole('textbox'), 'input text');
+    
+    userEvent.click(screen.getByTestId('Add'));
+    const listLengthAddAfter = screen.getByTestId('list').childElementCount;
+
+    expect(listLengthAddBefore + 1).toBe(listLengthAddAfter)
+    
+    expect(screen.getByTestId('todolist')).toMatchSnapshot();
+  });
+  test('A piece of data was successfully deleted and the length of the list was reduced by one', () => {// 成功删除一条数据，列表长度减一-----------(9)
+    const listLengthDeleteBefore = screen.getByTestId('list').childElementCount;
+    
+    const list = screen.getAllByTestId(/delete/);
+    list.map((e)=> {
+      userEvent.click(e);
+      const listLengthDeleteAfter = screen.getByTestId('list').childElementCount;
+  
+      expect(listLengthDeleteBefore - 1).toBe(listLengthDeleteAfter)
+    })
+    
+    expect(screen.getByTestId('todolist')).toMatchSnapshot();
+
+    // screen.getByTestId('update-time').innerHTML
+  });
+});
