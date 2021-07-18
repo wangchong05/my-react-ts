@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { StyledProps } from "styled-components";
-import TodoItem from './TodoItem';
+// import TodoItem from './TodoItem';
 
 export interface TodoItemProps extends StyledProps<any> {
   item?: object;
@@ -37,7 +37,7 @@ const TodoList = () => {
   // 添加
   const addItem = () => {
     if(!myRef.current.value || list.find((e) => { return e.action === myRef.current.value })) {
-      alert('请输入内容或内容重复')
+      // alert('请输入内容或内容重复')
       return
     }
     const newList = [...list, {action: myRef.current.value, complete: false}]
@@ -69,14 +69,47 @@ const TodoList = () => {
         <button onClick={addItem} data-testid='Add'>add</button>
       </div>
       <br/>
+      <div>
+        {
+          list.map((item, index) => {
+            return <TodoItem item={item} key={index} index={index} deleteItem={deleteItem} updateItem={updateItem}/>
+          })
+        }
+      </div>
 
-      {
-        list.map((item, index) => {
-          return <TodoItem item={item} key={index} index={index} deleteItem={deleteItem} updateItem={updateItem}/>
-        })
-      }
     </div>
   );
+}
+
+export interface ItemProps extends StyledProps<any> {}
+
+const TodoItem = (props: ItemProps) => {
+  const {item, index, deleteItem, updateItem}: ItemProps = props;
+  const { complete, action }: ItemProps = item;
+
+  const styleFun = (index: number) => {
+      return index%2 === 0 ? '#f0efef' : 'white';
+  }
+
+  const ItemWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    background: ${styleFun(index)};
+    text-align: left;
+    &:hover {
+      background: #e8e6e6;
+    }
+  `;
+
+  return (
+    <ItemWrapper data-testid={"list" + index}>
+    {/* <div> */}
+      <div style={{flex: 2}}>{action}</div>
+      <div style={{flex: 2}}><span data-testid={"complete" + index} style={{color: complete?'green':'red'}} onClick={()=>{updateItem(index)}}>{complete?'Yes':'No'}</span></div>
+      <div style={{flex: 1}}><span data-testid={"delete" + index} onClick={()=>{deleteItem(index)}}>delete</span></div>
+    {/* </div> */}
+    </ItemWrapper>
+  )
 }
 
 export default TodoList;
