@@ -22,10 +22,8 @@ const listOrigin = [
 
 const TodoList = () => {
 
-  const [list, setList] = useState(
-    listOrigin
-  )
-
+  const [list, setList] = useState(listOrigin)
+  const [isDisabled, setIsDisabled] = useState(true)
   const [updateTime, setUpdateTime] = useState('')
 
   const myRef = useRef<any>('')
@@ -36,13 +34,10 @@ const TodoList = () => {
 
   // 添加
   const addItem = () => {
-    if(!myRef.current.value || list.find((e) => { return e.action === myRef.current.value })) {
-      // alert('请输入内容或内容重复')
-      return
-    }
     const newList = [...list, {action: myRef.current.value, complete: false}]
     setList(newList)
     myRef.current.value = ''
+    setIsDisabled(true)
   }
 
   // 删除
@@ -59,17 +54,24 @@ const TodoList = () => {
     setList(newList)
   }
 
+  const changeValue = (e: { target: { value: string; }; }) => {
+    const valTemp = e.target.value
+    setIsDisabled(() => {
+      return (!valTemp || list.find((e) => { return e.action === valTemp }))?true:false;
+    })
+  }
+
   return (
     <div data-testid='todolist'>
       <h3>List</h3>
-      <div>Update Time: {updateTime}</div>
+      <div data-testid='update-time'>Update Time: {updateTime}</div>
       <br/>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <input type="text" ref={myRef} placeholder={'please input'} data-testid='input'/>
-        <button onClick={addItem} data-testid='Add'>add</button>
+        <input type="text" ref={myRef} placeholder={'please input'} data-testid='input' onChange={changeValue}/>
+        <button onClick={addItem} data-testid='Add' disabled={isDisabled}>add</button>
       </div>
       <br/>
-      <div>
+      <div data-testid='list'>
         {
           list.map((item, index) => {
             return <TodoItem item={item} key={index} index={index} deleteItem={deleteItem} updateItem={updateItem}/>
@@ -103,11 +105,9 @@ const TodoItem = (props: ItemProps) => {
 
   return (
     <ItemWrapper data-testid={"list" + index}>
-    {/* <div> */}
       <div style={{flex: 2}}>{action}</div>
       <div style={{flex: 2}}><span data-testid={"complete" + index} style={{color: complete?'green':'red'}} onClick={()=>{updateItem(index)}}>{complete?'Yes':'No'}</span></div>
       <div style={{flex: 1}}><span data-testid={"delete" + index} onClick={()=>{deleteItem(index)}}>delete</span></div>
-    {/* </div> */}
     </ItemWrapper>
   )
 }

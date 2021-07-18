@@ -6,8 +6,8 @@ import Input from '../../Components/Input/Input';
 const About = () => {
 
   const [content, setContent] = useState({
-    firstName: "hugvyvguyvuv",
-    date: "2017-04-01"
+    firstName: "tony",
+    date: "2021-07-14"
   })
 
   const [newValue, setNewValue] = useState(Object.assign({}, content))
