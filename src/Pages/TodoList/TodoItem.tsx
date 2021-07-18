@@ -22,7 +22,7 @@ const TodoItem = (props: ItemProps) => {
   `;
 
   return (
-    <ItemWrapper>
+    <ItemWrapper data-testid={"list" + index}>
     {/* <div> */}
       <div style={{flex: 2}}>{action}</div>
       <div style={{flex: 2}}><span style={{color: complete?'green':'red'}} onClick={()=>{updateItem(index)}}>{complete?'Yes':'No'}</span></div>

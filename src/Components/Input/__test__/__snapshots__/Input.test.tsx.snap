@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Props disabled 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-pNWdM iDMmfe"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    disabled=""
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props incoming defaultValue, the textbox should show the same value 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-gKAaRy ezFlSV"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value="Tom"
+  />
+</div>
+`;
+
+exports[`Props no type 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-dlnjwi lcIRfM"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props not disabled 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-jrsJWt hKxyeA"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props not readOnly, the textbox should not have readOnly attribute 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-fujyAs xZBSA"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props readOnly, the textbox should have readOnly attribute 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-iCoGMd fKbeHV"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    readonly=""
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props style 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-kEqXSa fhsrSR"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props type is date 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-jSFjdj liZikR"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="date"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props type is password or text 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-hKFxyN ctvA-DE"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Props type is password or text 2`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-eCApnc bIgqzE"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="password"
+    value=""
+  />
+  <input
+    data-testid="input-button"
+    type="button"
+    value="show"
+  />
+</div>
+`;
+
+exports[`Props type is password, B should be shown 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-gtsrHT hfZTVk"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="password"
+    value=""
+  />
+  <input
+    data-testid="input-button"
+    type="button"
+    value="show"
+  />
+</div>
+`;
+
+exports[`Props type is password, when the Show Password button is clicked, the correct text can be displayed 1`] = `
+<div
+  data-testid="labe-input"
+  style="display: flex; margin: 10px;"
+>
+  <span
+    class="sc-crzoAE gFAeUq"
+    data-testid="span"
+  />
+  <input
+    data-testid="input"
+    style="min-width: 200px; border: 1px solid gray;"
+    type="text"
+    value=""
+  />
+  <input
+    data-testid="input-button"
+    type="button"
+    value="hide"
+  />
+</div>
+`;

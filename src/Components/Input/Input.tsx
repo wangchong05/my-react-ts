@@ -3,8 +3,7 @@ import styled, { StyledProps } from "styled-components";
 
 export interface InputProps extends StyledProps<any> {
   label?: string;
-  type?: "text" | "date" | "password";
-  // type?: "text" | "password";
+  type?: "date" | "password" | "text";
   value?: string | number;
   readOnly?: boolean;
   disabled?: boolean;
@@ -14,11 +13,9 @@ export interface InputProps extends StyledProps<any> {
 const Input = (props: InputProps) => {
   const { 
     label, 
-    // KeyName, 
     type, 
     defaultValue, 
     readOnly, 
-    // changeContent, 
     disabled, 
     labelStyle
   }: InputProps = props;
@@ -70,18 +67,16 @@ const Input = (props: InputProps) => {
   `;
 
   return (
-    <div style={{display: 'flex', margin: '10px'}}>
+    <div data-testid='labe-input' style={{display: 'flex', margin: '10px'}}>
       <Span data-testid='span'>{label}</Span>
       <input 
         data-testid='input'
         // {...props}// props如何不带value属性
         type={inputType} 
-        // value={defaultValue} 
         defaultValue={defaultValue} 
         readOnly={readOnly} 
         disabled={disabled} 
-        style={props.inputStyle ? Object.assign(defaultInputStyle, props.inputStyle) : defaultInputStyle}// Object.assign(style)
-        // onChange={onChangeContent}/>
+        style={props.inputStyle ? Object.assign(defaultInputStyle, props.inputStyle) : defaultInputStyle}
         />
       { type === "password" && (
         <input data-testid='input-button' type="button" value={hide? "show": "hide"} onClick={hidePassword}/>
