@@ -20,6 +20,7 @@ describe('TodoList render', () => {
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('please input')).toBeInTheDocument();
+    expect(screen.getByTestId('list')).toBeInTheDocument();
   });
 });
 

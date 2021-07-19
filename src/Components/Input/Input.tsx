@@ -4,7 +4,7 @@ import styled, { StyledProps } from "styled-components";
 export interface InputProps extends StyledProps<any> {
   label?: string;
   type?: "date" | "password" | "text";
-  value?: string | number;
+  defaultValue?: string | number;
   readOnly?: boolean;
   disabled?: boolean;
   labelStyle?: object;
@@ -29,11 +29,6 @@ const Input = (props: InputProps) => {
     setInputType(hideTemp?"password":"text")
     return true
   }
-
-  // const onChangeContent = (val:any) => {
-  //   // changeContent({[KeyName]: type === "password" ? window.btoa(val.target.value) : val.target.value})
-  //   changeContent({[KeyName]: val.target.value})
-  // }
 
   const defaultLabelStyle = {
     'min-width': '50px',

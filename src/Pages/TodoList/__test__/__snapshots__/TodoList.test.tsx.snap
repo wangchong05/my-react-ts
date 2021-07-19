@@ -11,7 +11,7 @@ exports[`Add and delete each item in the list A data was successfully added, and
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19下午10:39:37
+    2021/7/19下午11:02:57
   </div>
   <br />
   <div
@@ -106,7 +106,7 @@ exports[`Add and delete each item in the list Delete each time, the length of th
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19下午10:39:38
+    2021/7/19下午11:02:58
   </div>
   <br />
   <div
@@ -201,7 +201,7 @@ exports[`Click the status button Click the status button, text and style should 
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19下午10:39:36
+    2021/7/19下午11:02:56
   </div>
   <br />
   <div
@@ -296,7 +296,7 @@ exports[`add button click cases click the add button directly 1`] = `
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19下午10:39:35
+    2021/7/19下午11:02:55
   </div>
   <br />
   <div
@@ -391,7 +391,7 @@ exports[`add button click cases enter the value is not empty, and then click the
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19下午10:39:35
+    2021/7/19下午11:02:55
   </div>
   <br />
   <div
@@ -486,7 +486,7 @@ exports[`add button click cases enter the value is not empty, and then click the
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19下午10:39:36
+    2021/7/19下午11:02:56
   </div>
   <br />
   <div
@@ -610,7 +610,7 @@ exports[`add button click cases enter the value to empty, and then click the add
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19下午10:39:35
+    2021/7/19下午11:02:55
   </div>
   <br />
   <div
