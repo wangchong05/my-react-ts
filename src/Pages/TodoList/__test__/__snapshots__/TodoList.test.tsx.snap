@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Add and delete each item in the list A data was successfully added, and the length of the list was added by one 1`] = `
+exports[`Add and delete each item in the list A data was successfully added, and the length of the list was added by one, time changes. 1`] = `
 <div
   data-testid="todolist"
 >
@@ -11,7 +11,7 @@ exports[`Add and delete each item in the list A data was successfully added, and
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19上午12:46:55
+    2021/7/19下午10:39:37
   </div>
   <br />
   <div
@@ -34,7 +34,7 @@ exports[`Add and delete each item in the list A data was successfully added, and
     data-testid="list"
   >
     <div
-      class="sc-cBoqAE hjkzgH"
+      class="sc-iTVJFM iFwnAG"
       data-testid="list0"
     >
       <div
@@ -63,7 +63,7 @@ exports[`Add and delete each item in the list A data was successfully added, and
       </div>
     </div>
     <div
-      class="sc-ciSkZP hwPYPK"
+      class="sc-iBzEeX ddLjoH"
       data-testid="list1"
     >
       <div
@@ -91,40 +91,11 @@ exports[`Add and delete each item in the list A data was successfully added, and
         </span>
       </div>
     </div>
-    <div
-      class="sc-jcwpoC eCgWwy"
-      data-testid="list2"
-    >
-      <div
-        style="flex: 2;"
-      >
-        input text
-      </div>
-      <div
-        style="flex: 2;"
-      >
-        <span
-          data-testid="complete2"
-          style="color: red;"
-        >
-          No
-        </span>
-      </div>
-      <div
-        style="flex: 1;"
-      >
-        <span
-          data-testid="delete2"
-        >
-          delete
-        </span>
-      </div>
-    </div>
   </div>
 </div>
 `;
 
-exports[`Add and delete each item in the list A piece of data was successfully deleted and the length of the list was reduced by one 1`] = `
+exports[`Add and delete each item in the list Delete each time, the length of the list is reduced by one, time changes. 1`] = `
 <div
   data-testid="todolist"
 >
@@ -135,7 +106,7 @@ exports[`Add and delete each item in the list A piece of data was successfully d
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19上午12:46:55
+    2021/7/19下午10:39:38
   </div>
   <br />
   <div
@@ -158,13 +129,13 @@ exports[`Add and delete each item in the list A piece of data was successfully d
     data-testid="list"
   >
     <div
-      class="sc-cTJkRt hPAIBg"
+      class="sc-gSYDnn eWNiXN"
       data-testid="list0"
     >
       <div
         style="flex: 2;"
       >
-        eat
+        drink
       </div>
       <div
         style="flex: 2;"
@@ -186,6 +157,130 @@ exports[`Add and delete each item in the list A piece of data was successfully d
         </span>
       </div>
     </div>
+    <div
+      class="sc-laZMeE kmtwSQ"
+      data-testid="list1"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete1"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete1"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Click the status button Click the status button, text and style should be changed, time changes 1`] = `
+<div
+  data-testid="todolist"
+>
+  <h3>
+    List
+  </h3>
+  <div
+    data-testid="update-time"
+  >
+    Update Time: 
+    2021/7/19下午10:39:36
+  </div>
+  <br />
+  <div
+    style="display: flex; justify-content: space-between;"
+  >
+    <input
+      data-testid="input"
+      placeholder="please input"
+      type="text"
+    />
+    <button
+      data-testid="Add"
+      disabled=""
+    >
+      add
+    </button>
+  </div>
+  <br />
+  <div
+    data-testid="list"
+  >
+    <div
+      class="sc-iklJeh dBUFYd"
+      data-testid="list0"
+    >
+      <div
+        style="flex: 2;"
+      >
+        drink
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete0"
+          style="color: red;"
+        >
+          No
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete0"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-jJMGnK hLytLB"
+      data-testid="list1"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete1"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete1"
+        >
+          delete
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -201,7 +296,7 @@ exports[`add button click cases click the add button directly 1`] = `
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19上午12:46:54
+    2021/7/19下午10:39:35
   </div>
   <br />
   <div
@@ -285,7 +380,7 @@ exports[`add button click cases click the add button directly 1`] = `
 </div>
 `;
 
-exports[`add button click cases enter the value is not empty, and then click the add button 1`] = `
+exports[`add button click cases enter the value is not empty, and then click the add button, time changes 1`] = `
 <div
   data-testid="todolist"
 >
@@ -296,7 +391,7 @@ exports[`add button click cases enter the value is not empty, and then click the
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19上午12:46:55
+    2021/7/19下午10:39:35
   </div>
   <br />
   <div
@@ -309,6 +404,7 @@ exports[`add button click cases enter the value is not empty, and then click the
     />
     <button
       data-testid="Add"
+      disabled=""
     >
       add
     </button>
@@ -318,7 +414,7 @@ exports[`add button click cases enter the value is not empty, and then click the
     data-testid="list"
   >
     <div
-      class="sc-fKgJPI iaPKyR"
+      class="sc-dlMDgC crzXCx"
       data-testid="list0"
     >
       <div
@@ -347,7 +443,7 @@ exports[`add button click cases enter the value is not empty, and then click the
       </div>
     </div>
     <div
-      class="sc-bCwfaz kHRhhV"
+      class="sc-kfYoZR nWiQl"
       data-testid="list1"
     >
       <div
@@ -379,6 +475,130 @@ exports[`add button click cases enter the value is not empty, and then click the
 </div>
 `;
 
+exports[`add button click cases enter the value is not empty, and then click the add button, time changes 2`] = `
+<div
+  data-testid="todolist"
+>
+  <h3>
+    List
+  </h3>
+  <div
+    data-testid="update-time"
+  >
+    Update Time: 
+    2021/7/19下午10:39:36
+  </div>
+  <br />
+  <div
+    style="display: flex; justify-content: space-between;"
+  >
+    <input
+      data-testid="input"
+      placeholder="please input"
+      type="text"
+    />
+    <button
+      data-testid="Add"
+      disabled=""
+    >
+      add
+    </button>
+  </div>
+  <br />
+  <div
+    data-testid="list"
+  >
+    <div
+      class="sc-iJCRrE bZYflR"
+      data-testid="list0"
+    >
+      <div
+        style="flex: 2;"
+      >
+        drink
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete0"
+          style="color: red;"
+        >
+          No
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete0"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-giAqHp ejyxuM"
+      data-testid="list1"
+    >
+      <div
+        style="flex: 2;"
+      >
+        eat
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete1"
+          style="color: green;"
+        >
+          Yes
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete1"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+    <div
+      class="sc-ezzafa ldLYJv"
+      data-testid="list2"
+    >
+      <div
+        style="flex: 2;"
+      >
+        input text
+      </div>
+      <div
+        style="flex: 2;"
+      >
+        <span
+          data-testid="complete2"
+          style="color: red;"
+        >
+          No
+        </span>
+      </div>
+      <div
+        style="flex: 1;"
+      >
+        <span
+          data-testid="delete2"
+        >
+          delete
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`add button click cases enter the value to empty, and then click the add button 1`] = `
 <div
   data-testid="todolist"
@@ -390,7 +610,7 @@ exports[`add button click cases enter the value to empty, and then click the add
     data-testid="update-time"
   >
     Update Time: 
-    2021/7/19上午12:46:54
+    2021/7/19下午10:39:35
   </div>
   <br />
   <div

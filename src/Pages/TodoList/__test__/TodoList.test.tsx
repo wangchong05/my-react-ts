@@ -1,13 +1,16 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TodoList from '../TodoList';
-// import TodoItem from '../TodoItem';
-import renderer from "react-test-renderer";
 
 beforeEach(() => {
   render(<TodoList />);
 })
+const foo = (callback: { (): void; })=>  {
+    setTimeout(() => {
+        callback && callback();
+    }, 1000)
+}
  
 describe('TodoList render', () => {
   test('renders visible static elements in the TodoList', () => {
@@ -17,11 +20,9 @@ describe('TodoList render', () => {
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('please input')).toBeInTheDocument();
-
-    // expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
 });
- 
+
 describe('Input cases', () => {
   test('input text', () => {
     userEvent.type(screen.getByRole('textbox'), 'input text');
@@ -47,16 +48,27 @@ describe('add button click cases', () => {
     expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
   test('enter the value to empty, and then click the add button', async () => {
-    userEvent.type(screen.getByRole('textbox'), '');
+    await userEvent.type(screen.getByRole('textbox'), '');
     await userEvent.click(screen.getByTestId('Add'));
     expect(screen.getByTestId('Add')).toBeDisabled();
 
     expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
-  test('enter the value is not empty, and then click the add button', async () => {
-    userEvent.type(screen.getByRole('textbox'), 'input text');
-    expect(screen.getByTestId('Add')).toBeEnabled();
-    
+  test('enter the value is not empty, and then click the add button, time changes', (done) => {
+    const timeBefore = screen.getByTestId('update-time').innerHTML;
+
+    const fun = () => {
+      userEvent.type(screen.getByRole('textbox'), 'input text');
+      expect(screen.getByTestId('Add')).toBeEnabled();
+      userEvent.click(screen.getByTestId('Add'));
+      
+      expect(screen.getByTestId('todolist')).toMatchSnapshot();
+      done();
+      const timeAfter = screen.getByTestId('update-time').innerHTML;
+      expect(timeBefore).not.toBe(timeAfter)
+    }
+    foo(fun);
+      
     expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
 });
@@ -71,54 +83,75 @@ describe('add button click cases', () => {
 // })
  
 describe('Click the status button', () => {
-  test('Click the status button, text and style should be changed', async () => {
-    // expect(screen.getByTestId('complete1')).toHaveStyle({'color': 'green'})
+  test('Click the status button, text and style should be changed, time changes', (done) => {
     // expect(screen.getByTestId('complete1')).toHaveTextContent("Yes");
 
     // await userEvent.click(screen.getByTestId('complete1'));
-    // expect(screen.getByTestId('complete1')).toHaveStyle({'color': 'red'})
     // expect(screen.getByTestId('complete1')).toHaveTextContent("No");
-    
-    const list = screen.getAllByTestId(/complete/);
-    list.map((e, index)=> {
-      const styleChangeBefore = e.style;
-      // const innerhtmlChangeBefore = e.innerHTML;
-      userEvent.click(e);
-      const styleChangeAfter = screen.getByTestId('complete' + index).style;
-      // const innerhtmlChangeAfter = screen.getByTestId('complete' + index).innerHTML;
+    const timeBefore = screen.getByTestId('update-time').innerHTML;
 
-      expect(styleChangeBefore).not.toEqual(styleChangeAfter)
-      // expect(innerhtmlChangeBefore).not.toBe(innerhtmlChangeAfter)
-    })
+    const fun = () => {
+      const list = screen.getAllByTestId(/complete/);
+      list.map((e, index)=> {
+        const styleChangeBefore = e.style;
+        // const innerhtmlChangeBefore = e.innerHTML;
+        userEvent.click(e);
+        const styleChangeAfter = screen.getByTestId('complete' + index).style;
+        // const innerhtmlChangeAfter = screen.getByTestId('complete' + index).innerHTML;
+
+        expect(styleChangeBefore).not.toEqual(styleChangeAfter)
+        // expect(innerhtmlChangeBefore).not.toBe(innerhtmlChangeAfter)
+      })
+      done();
+      const timeAfter = screen.getByTestId('update-time').innerHTML;
+      expect(timeBefore).not.toBe(timeAfter)
+    }
+    foo(fun);
+      
+    expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
 });
 
 
 describe('Add and delete each item in the list', () => {
-  test('A data was successfully added, and the length of the list was added by one', () => {
-    const listLengthAddBefore = screen.getByTestId('list').childElementCount;
-    userEvent.type(screen.getByRole('textbox'), 'input text');
-    
-    userEvent.click(screen.getByTestId('Add'));
-    const listLengthAddAfter = screen.getByTestId('list').childElementCount;
+  test('A data was successfully added, and the length of the list was added by one, time changes.', (done) => {
+    const timeBefore = screen.getByTestId('update-time').innerHTML;
 
-    expect(listLengthAddBefore + 1).toBe(listLengthAddAfter)
-    
+    const fun = () => {
+      const listLengthAddBefore = screen.getByTestId('list').childElementCount;
+      userEvent.type(screen.getByRole('textbox'), 'input text');
+      
+      userEvent.click(screen.getByTestId('Add'));
+      const listLengthAddAfter = screen.getByTestId('list').childElementCount;
+
+      expect(listLengthAddBefore + 1).toBe(listLengthAddAfter)
+      done();
+      const timeAfter = screen.getByTestId('update-time').innerHTML;
+      expect(timeBefore).not.toBe(timeAfter)
+    }
+    foo(fun);
+      
     expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
-  test('A piece of data was successfully deleted and the length of the list was reduced by one', () => {// 成功删除一条数据，列表长度减一-----------(9)
-    const listLengthDeleteBefore = screen.getByTestId('list').childElementCount;
-    
-    const list = screen.getAllByTestId(/delete/);
-    list.map((e)=> {
-      userEvent.click(e);
-      const listLengthDeleteAfter = screen.getByTestId('list').childElementCount;
-  
-      expect(listLengthDeleteBefore - 1).toBe(listLengthDeleteAfter)
-    })
-    
-    expect(screen.getByTestId('todolist')).toMatchSnapshot();
+  test('Delete each time, the length of the list is reduced by one, time changes.', (done) => {
+    const timeBefore = screen.getByTestId('update-time').innerHTML;
 
-    // screen.getByTestId('update-time').innerHTML
+    const fun = () => {
+      const listLengthDeleteBefore = screen.getByTestId('list').childElementCount;
+      
+      const list = screen.getAllByTestId(/delete/);
+      list.map((e)=> {
+        userEvent.click(e);
+        const listLengthDeleteAfter = screen.getByTestId('list').childElementCount;
+    
+        expect(listLengthDeleteBefore - 1).toBe(listLengthDeleteAfter)
+      })
+      done();
+      const timeAfter = screen.getByTestId('update-time').innerHTML;
+      expect(timeBefore).not.toBe(timeAfter)
+    }
+    foo(fun);
+      
+    expect(screen.getByTestId('todolist')).toMatchSnapshot();
   });
 });
