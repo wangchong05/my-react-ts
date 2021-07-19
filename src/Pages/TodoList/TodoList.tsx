@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { StyledProps } from "styled-components";
-// import TodoItem from './TodoItem';
 
 export interface TodoItemProps extends StyledProps<any> {
   item?: object;
